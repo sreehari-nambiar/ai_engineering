@@ -1,0 +1,328 @@
+{
+  "updatedAt": "2025-12-14T06:31:15.083Z",
+  "createdAt": "2025-12-14T04:34:12.749Z",
+  "id": "gRiwUyMhY5MNmHwQ",
+  "name": "RAG with memory",
+  "description": null,
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -272,
+        1144
+      ],
+      "id": "32340cde-82fb-4519-8b30-8bbab09e6713",
+      "name": "When chat message received",
+      "webhookId": "389a9ab8-7a70-40cb-9ced-2bf102f5be53",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        8,
+        1144
+      ],
+      "id": "5fcbab90-6a95-476f-86ee-9fb8a8901740",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "deepseek/deepseek-chat",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        -48,
+        1368
+      ],
+      "id": "1683db50-00b5-47a1-b1f9-b73755ce4b34",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "zIg2p4llPUUK21VO",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        80,
+        1368
+      ],
+      "id": "63a0c0df-5541-47ab-858a-8d9bf90b695b",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "0SY8vGJWK6mSv3Q8",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "formTitle": "Upload your data to RAG",
+        "formDescription": "Upload your data to RAG",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Upload your file(s)",
+              "fieldType": "file",
+              "acceptFileTypes": ".pdf",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        -272,
+        640
+      ],
+      "id": "3b48f60f-b48f-4992-b704-2bc0d0fe075c",
+      "name": "On form submission",
+      "webhookId": "35426637-0162-4257-bdd6-b2cb9ea8f599"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "tableName": {
+          "__rl": true,
+          "value": "document_sections",
+          "mode": "list",
+          "cachedResultName": "document_sections"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.3,
+      "position": [
+        48,
+        432
+      ],
+      "id": "552c0b11-6319-417a-9267-3ace597d26f9",
+      "name": "Supabase Vector Store1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "jnkngm81OFds8cgH",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        16,
+        656
+      ],
+      "id": "6b0f2d02-5474-432c-ae22-01e40cc255d3",
+      "name": "Embeddings OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "iVxuqu7IGzJgmBT3",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataType": "binary",
+        "textSplittingMode": "custom",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        144,
+        656
+      ],
+      "id": "d2d49675-fa29-4d47-a68d-90d616c001f4",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        224,
+        864
+      ],
+      "id": "a1c53ae6-ecac-4eab-9f03-693e4f10ec30",
+      "name": "Recursive Character Text Splitter"
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Extracting chunks",
+        "tableName": {
+          "__rl": true,
+          "value": "document_sections",
+          "mode": "list",
+          "cachedResultName": "document_sections"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.3,
+      "position": [
+        512,
+        1184
+      ],
+      "id": "1e5160bc-be9f-4f19-9829-834e2b7fea4d",
+      "name": "Supabase Vector Store",
+      "credentials": {
+        "supabaseApi": {
+          "id": "jnkngm81OFds8cgH",
+          "name": "Supabase account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Supabase Vector Store1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Supabase Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          },
+          {
+            "node": "Supabase Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Supabase Vector Store1",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recursive Character Text Splitter": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase Vector Store": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {},
+  "versionId": "43b9f30e-4773-4f53-893b-4239edd7c816",
+  "activeVersionId": null,
+  "versionCounter": 17,
+  "triggerCount": 0,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2025-12-14T04:34:12.754Z",
+      "createdAt": "2025-12-14T04:34:12.754Z",
+      "role": "workflow:owner",
+      "workflowId": "gRiwUyMhY5MNmHwQ",
+      "projectId": "mrsSb7JCmN7gKdEx",
+      "project": {
+        "updatedAt": "2025-12-11T22:06:23.542Z",
+        "createdAt": "2025-12-11T22:04:08.274Z",
+        "id": "mrsSb7JCmN7gKdEx",
+        "name": "Sreehari Nambiar <sreehari.nambiar@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null
+      }
+    }
+  ]
+}

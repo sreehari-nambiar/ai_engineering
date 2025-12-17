@@ -1,0 +1,315 @@
+{
+  "updatedAt": "2025-12-17T03:35:52.329Z",
+  "createdAt": "2025-12-14T22:07:47.638Z",
+  "id": "cSf1KXnKHn9xUqEh",
+  "name": "finance agent",
+  "description": null,
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## 🤖 AI Financial Analyst Workflow\n\n**What this does:**\nThis workflow creates an intelligent financial analyst agent that:\n- Receives user queries via webhook\n- Performs real-time internet research \n- Provides comprehensive financial analysis\n- Maintains conversation memory\n- Returns professional investment insights\n\n**Perfect for:** Stock analysis, market research, investment decisions, economic trends\n\n---\n\n📚 **Want to build more AI agents?**  \n[Learn ML System Design →](https://maven.com/boring-bot/ml-system-design)\n\n💻 **Get the source code:**  \n[GitHub: Agents in Action →](https://github.com/traversaal-ai/agents-in-action)",
+        "height": 464,
+        "width": 386,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -640,
+        -208
+      ],
+      "id": "06e2f6d5-5728-419d-9aeb-e4522d3d4435",
+      "name": "Workflow Overview"
+    },
+    {
+      "parameters": {
+        "content": "## 🎯 AI Agent Core\n\n**The Brain:** Expert financial analyst with:\n- Market knowledge\n- Economic trend analysis\n- Investment strategy expertise\n\nUses advanced prompt engineering for:\n- Query breakdown\n- Research strategy\n- Professional analysis framework\n\n---\n\n🚀 **Master AI Agent Development:**  \n[Take the Course →](https://maven.com/boring-bot/ml-system-design)",
+        "height": 280,
+        "width": 300
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -176,
+        -176
+      ],
+      "id": "a0e81ec2-5d3c-4a36-832c-37687ed444f1",
+      "name": "AI Agent Info"
+    },
+    {
+      "parameters": {
+        "content": "## 🧠 GPT-4o Mini\n\n**Language Model:**\n- Cost-effective OpenAI model\n- Fast response times\n- Great for financial analysis\n- Handles complex reasoning\n\n**Pro Tip:** Upgrade to GPT-4 for even more detailed analysis!\n\n---\n\n📖 **Learn model selection strategies:**  \n[GitHub Examples →](https://github.com/traversaal-ai/agents-in-action)",
+        "height": 240,
+        "width": 280
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -176,
+        496
+      ],
+      "id": "b8680b0c-62a5-46b5-b6a4-270dae3f3aa8",
+      "name": "Language Model"
+    },
+    {
+      "parameters": {
+        "content": "## 💭 Conversation Memory\n\n**Features:**\n- Remembers chat history\n- User-specific sessions\n- Context-aware responses\n- Follow-up questions work!\n\n**Session Key:** Uses username for personalized experience\n\n---\n\n🔧 **Explore memory patterns:**  \n[GitHub: Memory Systems →](https://github.com/traversaal-ai/agents-in-action)",
+        "height": 220,
+        "width": 280
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        160,
+        480
+      ],
+      "id": "f878a608-6e87-4024-91ae-9bf5a60017c0",
+      "name": "Memory System"
+    },
+    {
+      "parameters": {
+        "content": "## 🌐 Real-Time Research\n\n**Internet Search Tool:**\n- Live market data access\n- Latest financial news\n- Company earnings reports\n- Economic indicators\n\n**API:** Traversaal ARES engine for accurate, up-to-date information\n\n---\n\n⚡ **Build your own search tools:**  \n[Course: Tool Integration →](https://maven.com/boring-bot/ml-system-design)",
+        "height": 260,
+        "width": 320
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        608,
+        432
+      ],
+      "id": "292aebe2-70fc-4a70-8cb2-b346a681fd42",
+      "name": "Search Tool"
+    },
+    {
+      "parameters": {
+        "content": "## 📥 Webhook Input\n\n**Receives:**\n- username\n- query\n\n**Trigger:** POST requests from chatbot or external apps\n\n**Endpoint:** Ready for integration!\n\n---\n\n🔗 **API Integration Patterns:**  \n[GitHub Examples →](https://github.com/traversaal-ai/agents-in-action)",
+        "height": 200,
+        "width": 260
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -272,
+        272
+      ],
+      "id": "c9d4c1ff-c4a9-490b-b9cb-66e092742b01",
+      "name": "Webhook Input"
+    },
+    {
+      "parameters": {
+        "content": "## 📤 Response Output\n\n**Returns:**\n- Professional financial analysis\n- Markdown formatted\n- Actionable insights\n- Data-driven recommendations\n\n**Format:** Clean text ready for display\n\n---\n\n📊 **Response Optimization:**  \n[Learn More →](https://maven.com/boring-bot/ml-system-design)",
+        "height": 200,
+        "width": 260
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        544,
+        -144
+      ],
+      "id": "32ab73ff-75f4-4cbe-816e-fe5596d48fbe",
+      "name": "Response Output"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an expert financial analyst and investment advisor with deep knowledge of global markets, economic trends, and financial instruments.\n\nUser Query: {{ $json.body.query }}\nCurrent Date/Time: {{ $now }}\nCurrent Year: 2025\n\n## Your Mission:\nProvide a comprehensive, data-driven financial analysis for the user's query by leveraging real-time market information and economic data.\n\n## Research Strategy:\n1. **Break down the user's query** into 2-4 focused research questions that will provide the most valuable financial insights\n2. **Use the search tool strategically** - each search should target specific, current financial data\n3. **Prioritize recent information** - focus on 2024-2025 data, quarterly reports, and latest market developments\n\n## Search Query Guidelines:\n- Include specific timeframes (e.g., \"2024 Q4\", \"latest\", \"current\")\n- Target authoritative financial sources (Bloomberg, Reuters, SEC filings, earnings reports)\n- Search for both fundamental data (financials, ratios) and technical indicators when relevant\n- Look for expert analyst opinions and institutional research\n\n## Analysis Framework:\nAfter gathering data, structure your response to include:\n- **Executive Summary** - Key findings and recommendations\n- **Current Market Position** - Latest price/valuation data with context\n- **Financial Health Analysis** - Key metrics, ratios, and performance indicators  \n- **Risk Assessment** - Potential upside/downside factors\n- **Market Context** - How broader economic conditions affect this investment\n- **Actionable Insights** - Specific, practical recommendations with reasoning\n\n## Response Quality Standards:\n- Cite specific data points with approximate dates\n- Quantify your analysis with numbers, percentages, and comparisons\n- Acknowledge any limitations in available data\n- Use professional financial terminology appropriately\n- Provide balanced perspective showing multiple viewpoints when relevant\n\nRemember: Your goal is to deliver institutional-quality financial analysis that helps the user make informed decisions based on the most current available information.",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        128,
+        64
+      ],
+      "id": "a8fe4a2c-c176-4398-8458-ee3d4c4109f6",
+      "name": "AI Agent",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.body.username }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        224,
+        320
+      ],
+      "id": "56053e2f-dcf6-4dc1-8db2-06955ef99f79",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Search the Internet for information",
+        "method": "POST",
+        "url": "https://api-ares.traversaal.ai/live/predict",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "your_traversaal_api_key_here"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('JSON', `{\n  \"query\": [\n    \"search query\"\n  ]\n}`, 'json') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        464,
+        304
+      ],
+      "id": "763a94d1-1154-488e-8fe0-6a42247c8976",
+      "name": "Internet Search"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "d82c3854-146b-4212-b94e-5b0ca8d7075b",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -240,
+        112
+      ],
+      "id": "f9e5fa5f-6bd8-4dae-9ea3-93fcd81d91f1",
+      "name": "Webhook",
+      "webhookId": "d82c3854-146b-4212-b94e-5b0ca8d7075b"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.3,
+      "position": [
+        480,
+        64
+      ],
+      "id": "0e97243a-902a-4cb0-bfa9-bd8ed038fae3",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "model": "deepseek/deepseek-chat",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        32,
+        272
+      ],
+      "id": "d318fd90-bf8c-4173-a90d-9252d06e2583",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "zIg2p4llPUUK21VO",
+          "name": "OpenRouter account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Internet Search": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {},
+  "versionId": "f2de6801-270d-4e9d-ba80-c899f6b779fc",
+  "activeVersionId": null,
+  "versionCounter": 3,
+  "triggerCount": 0,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2025-12-14T22:07:47.647Z",
+      "createdAt": "2025-12-14T22:07:47.647Z",
+      "role": "workflow:owner",
+      "workflowId": "cSf1KXnKHn9xUqEh",
+      "projectId": "mrsSb7JCmN7gKdEx",
+      "project": {
+        "updatedAt": "2025-12-11T22:06:23.542Z",
+        "createdAt": "2025-12-11T22:04:08.274Z",
+        "id": "mrsSb7JCmN7gKdEx",
+        "name": "Sreehari Nambiar <sreehari.nambiar@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null
+      }
+    }
+  ]
+}

@@ -11,5 +11,6 @@ dependencies = [
     "langchain>=1.1.2",
     "langchain-google-genai>=3.2.0",
     "langgraph>=1.0.4",
+    "nest-asyncio>=1.6.0",
     "pydantic>=2.12.5",
 ]

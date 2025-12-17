@@ -1,0 +1,284 @@
+{
+  "updatedAt": "2025-12-11T23:51:27.643Z",
+  "createdAt": "2025-12-11T23:15:25.954Z",
+  "id": "XDtZ39l3sVK4thp9",
+  "name": "hello-world",
+  "description": null,
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "029af31f-ffea-4ad4-85f9-4d7bc31c9ded",
+      "name": "When chat message received",
+      "webhookId": "fbb7aabf-0e69-4dc1-bbfc-e44816aebf16"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a helpful assistantYou are an **AI Agent** for a simple demo.\n\nRules:\n- Reply in short, clear sentences (2–3 max).\n- Use everyday language anyone can understand.\n- If the user’s request is vague, give a general answer and explain that adding detail would improve it.\n- If the request is more specific, tailor your answer to match the detail.\n\nExamples:\nUser: \"Tell me about Paris\"\nAI: \"Paris is a city in France, famous for the Eiffel Tower.\"  \nAI note: \"That was general because the prompt was general.\"\n\nUser: \"Tell me about Paris as a foodie\"\nAI: \"Paris is known for cafés, bakeries, and fine dining.\"  \nAI note: \"Adding 'as a foodie' made the answer more specific.\"\n\nUser: \"I have eggs and rice\"\nAI: \"You could make a simple fried rice by scrambling the eggs with rice and vegetables.\"  \nAI note: \"Listing ingredients helped me give a tailored suggestion.\"\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "c5dd2082-3d00-4f7b-b285-77b854ffa22b",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "deepseek/deepseek-chat",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        80,
+        208
+      ],
+      "id": "f1ef5a7c-c05b-4c4a-a1ab-f5abf6670d99",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "zIg2p4llPUUK21VO",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        224,
+        208
+      ],
+      "id": "b5fa87b0-50da-4cb2-a7f5-416908d3653e",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "content": "# Start Here — AI Chat Trigger\n\n💬 **Chat Trigger**\n- Entry point: type directly in n8n’s chat UI\n- No setup beyond OpenRouter credentials\n- Perfect for “Hello World” demo\n\n🧠 **AI Agent**\n- Follows simple rules: short, clear answers\n- Highlights how vague vs. specific prompts change replies\n\n🤖 **OpenRouter Model**\n- Model: deepseek-chat\n- Fast + inexpensive\n- Generates responses based on the chat message\n\n🗂️ **Memory**\n- Keeps track of previous messages during chat\n- Makes conversation feel continuous\n\n✨ **What to Notice**\n- General prompt = general answer\n- Specific prompt = tailored answer\n- First step before connecting apps or webhooks\n",
+        "height": 576,
+        "width": 1120,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        176,
+        1120
+      ],
+      "typeVersion": 1,
+      "id": "9ceeb103-8888-4f72-92b8-1666c60d28d4",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "💬 CHAT TRIGGER\n- Starts the workflow when you send a message\n- Used only inside n8n’s built-in chat UI\n",
+        "height": 120,
+        "width": 272
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        672,
+        992
+      ],
+      "typeVersion": 1,
+      "id": "f2e9b26c-31aa-4194-af36-a815a8e8cc13",
+      "name": "Overview Explanation1"
+    },
+    {
+      "parameters": {
+        "content": "🧠 AI AGENT\n- Uses a fixed set of rules\n- Shows the impact of prompt wording on the response",
+        "height": 104,
+        "width": 304,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1040,
+        992
+      ],
+      "typeVersion": 1,
+      "id": "df68d2bc-fdea-4250-8193-11dd14c639a0",
+      "name": "Overview Explanation3"
+    },
+    {
+      "parameters": {
+        "content": "🗂️ MEMORY\n- Remembers recent chat history\n- Keeps conversation flowing naturally",
+        "height": 104,
+        "width": 272,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1184,
+        1312
+      ],
+      "typeVersion": 1,
+      "id": "bc0ea4b8-6587-49a8-8c06-ffef68fe8f3d",
+      "name": "Overview Explanation4"
+    },
+    {
+      "parameters": {
+        "content": "🤖 OpenRouter CHAT MODEL\n- Model: deepseek-chat\n- Generates answers from your chat prompts\n",
+        "height": 104,
+        "width": 288,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        576,
+        1296
+      ],
+      "typeVersion": 1,
+      "id": "95035e69-0a13-480c-a981-9ebd67c658e5",
+      "name": "Overview Explanation5"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are an **AI Agent** for a simple demo.\n\nRules:\n- Reply in short, clear sentences (2–3 max).\n- Use everyday language anyone can understand.\n- If the user’s request is vague, give a general answer and explain that adding detail would improve it.\n- If the request is more specific, tailor your answer to match the detail.\n\nExamples:\nUser: \"Tell me about Paris\"\nAI: \"Paris is a city in France, famous for the Eiffel Tower.\"  \nAI note: \"That was general because the prompt was general.\"\n\nUser: \"Tell me about Paris as a foodie\"\nAI: \"Paris is known for cafés, bakeries, and fine dining.\"  \nAI note: \"Adding 'as a foodie' made the answer more specific.\"\n\nUser: \"I have eggs and rice\"\nAI: \"You could make a simple fried rice by scrambling the eggs with rice and vegetables.\"  \nAI note: \"Listing ingredients helped me give a tailored suggestion.\"\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        960,
+        1120
+      ],
+      "id": "eed342c0-6f9b-4fbe-9cbb-695e524c92a0",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1072,
+        1344
+      ],
+      "id": "41e08b59-b3a0-408e-abf9-f216438563e9",
+      "name": "Simple Memory1"
+    },
+    {
+      "parameters": {
+        "model": "deepseek/deepseek-chat",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        912,
+        1344
+      ],
+      "id": "7ea19fc3-0974-445d-b2aa-35d62a83d62a",
+      "name": "OpenRouter Chat Model1",
+      "credentials": {
+        "openRouterApi": {
+          "id": "zIg2p4llPUUK21VO",
+          "name": "OpenRouter account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {},
+  "versionId": "dcf9363e-f84c-406a-a3ed-7fc6541f3694",
+  "activeVersionId": null,
+  "versionCounter": 6,
+  "triggerCount": 0,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2025-12-11T23:15:25.958Z",
+      "createdAt": "2025-12-11T23:15:25.958Z",
+      "role": "workflow:owner",
+      "workflowId": "XDtZ39l3sVK4thp9",
+      "projectId": "mrsSb7JCmN7gKdEx",
+      "project": {
+        "updatedAt": "2025-12-11T22:06:23.542Z",
+        "createdAt": "2025-12-11T22:04:08.274Z",
+        "id": "mrsSb7JCmN7gKdEx",
+        "name": "Sreehari Nambiar <sreehari.nambiar@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null
+      }
+    }
+  ]
+}

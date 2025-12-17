@@ -1,0 +1,1164 @@
+{
+  "updatedAt": "2025-12-14T22:04:39.577Z",
+  "createdAt": "2025-12-14T01:01:06.958Z",
+  "id": "UJkOtkkvV0kh3wqx",
+  "name": "supabse-rag-with-comments",
+  "description": null,
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1616,
+        1408
+      ],
+      "id": "e3a5ba21-d3a5-4ab1-be16-9c4109f7d012",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "iVxuqu7IGzJgmBT3",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataType": "binary",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1,
+      "position": [
+        1856,
+        1408
+      ],
+      "id": "5a0698d4-8f9c-4636-a0e1-f9ef86092f1f",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        1904,
+        1600
+      ],
+      "id": "d186e00f-d1c6-452f-afc5-84550e36ff9a",
+      "name": "Recursive Character Text Splitter"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        1168,
+        1184
+      ],
+      "id": "bb9ccc8e-ffed-48ba-af37-a65194896c92",
+      "name": "When clicking 'Test workflow'"
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "1JdGsDWP8F7K8i8D_MRdPMZSCbPg4fzZR",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1392,
+        1184
+      ],
+      "id": "24f50cd0-e03c-48dd-bc2d-50a95aebdbe1",
+      "name": "Download File"
+    },
+    {
+      "parameters": {
+        "content": "# 301 — Webhook + RAG (AWS Agent)\n\n##  Document → Vector Store Ingestion Flow\n\n📋 Flow\nManual Trigger → Download File → Data Loader → Text Splitter → Embeddings → Vector Store\n\nResult:\nS3 knowledge base (vector store) is ready for the Agent to query\n\n",
+        "height": 736,
+        "width": 1216,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        656,
+        896
+      ],
+      "typeVersion": 1,
+      "id": "f8868750-3c96-463d-ba44-4e482db2db6c",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "⬇️ DOWNLOAD FILE (Google Drive)\n- Pulls source doc from Drive by file ID\n- Replace with your own AWS/S3 doc\n- Triggered manually for ingestion\n",
+        "height": 136,
+        "width": 288,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1328,
+        1040
+      ],
+      "typeVersion": 1,
+      "id": "4c79f02d-4516-453d-87c5-9f68fd25254f",
+      "name": "Overview Explanation6"
+    },
+    {
+      "parameters": {
+        "content": "📂 DATA LOADER\n- Reads file contents into n8n\n- Converts into doc format for splitting\n",
+        "height": 104,
+        "width": 256,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2128,
+        1376
+      ],
+      "typeVersion": 1,
+      "id": "27f35320-89cc-4178-a367-87058a23454e",
+      "name": "Overview Explanation7"
+    },
+    {
+      "parameters": {
+        "content": "📄 TEXT SPLITTER\n- Breaks doc into smaller chunks\n- Keeps semantic meaning per chunk\n",
+        "height": 104,
+        "width": 288,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2064,
+        1600
+      ],
+      "typeVersion": 1,
+      "id": "c8304ec2-5b70-4742-9636-602dc017c223",
+      "name": "Overview Explanation8"
+    },
+    {
+      "parameters": {
+        "content": "🔤 EMBEDDINGS + 📚 VECTOR STORE\n- Embeddings: convert text chunks → vectors\n- Vector Store: holds all chunks as searchable knowledge base\n- Used later by AWS Agent for S3 answers\n",
+        "height": 168,
+        "width": 288,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1264,
+        1376
+      ],
+      "typeVersion": 1,
+      "id": "b1568bd1-4a7c-4571-b77b-2625e6c06737",
+      "name": "Overview Explanation9"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1728,
+        480
+      ],
+      "id": "345d6d82-4d6c-48d3-a24c-16923421bc7f",
+      "name": "Embeddings",
+      "credentials": {
+        "openAiApi": {
+          "id": "iVxuqu7IGzJgmBT3",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# 401 — Webhook + RAG + Internet Search (AWS Knowledge Agent)\n\n🔁 Routing\n- S3 topics → **s3_knowledge_base** (vector tool)\n- Other AWS topics → **internet_search** (web search)\n- Non-AWS → polite refusal\n\n🧩 Flow\nWebhook → AI Agent → (Tools) → Respond to Webhook\n",
+        "height": 736,
+        "width": 1216,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        176,
+        -96
+      ],
+      "typeVersion": 1,
+      "id": "a992677c-b57c-45c7-8d10-3c7bbb704658",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "🌐 WEBHOOK (POST)\n- Input: { query, username }\n- Use Production URL (workflow Active)\n- username = session key for memory\n",
+        "height": 136,
+        "width": 288
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        544,
+        160
+      ],
+      "typeVersion": 1,
+      "id": "3b890abc-bc4e-4b64-933e-f872d80be5e0",
+      "name": "Overview Explanation1"
+    },
+    {
+      "parameters": {
+        "content": "🧠 AI AGENT (ROUTER)\n- No model-only answers (tools required)\n- If **S3** → use s3_knowledge_base\n- If **AWS not S3** → use internet_search\n- If **non-AWS** → refuse politely\n- Appends: source tag in the reply\n",
+        "height": 200,
+        "width": 272,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1376,
+        -96
+      ],
+      "typeVersion": 1,
+      "id": "a2e2a5fa-c3a3-479d-a5d2-d632042e7231",
+      "name": "Overview Explanation3"
+    },
+    {
+      "parameters": {
+        "content": "↩️ RESPOND TO WEBHOOK\nReturns AI reply to the caller\n- Plain text or small JSON (config)\n- Keep it simple for this level\n",
+        "height": 120,
+        "width": 288
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1952,
+        16
+      ],
+      "typeVersion": 1,
+      "id": "b36e4ffd-c2c4-40dc-aa27-6fb394f745ca",
+      "name": "Overview Explanation2"
+    },
+    {
+      "parameters": {
+        "content": "🗂️ MEMORY\n- sessionKey = username\n- Same user → shared context\n- Different user → fresh session\n",
+        "height": 120,
+        "width": 288,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1296,
+        432
+      ],
+      "typeVersion": 1,
+      "id": "046ba4bb-7cbf-4dc1-9d78-a6cec39829e8",
+      "name": "Overview Explanation4"
+    },
+    {
+      "parameters": {
+        "content": "🤖 OPENAI CHAT MODEL\n- Model: gpt-4o-mini\n- Fast + cost-effective\n- Used for non-S3 AWS answers\n",
+        "height": 104,
+        "width": 288,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        976,
+        432
+      ],
+      "typeVersion": 1,
+      "id": "e08b0a0a-dd0c-46e4-9fa0-8ebd7efa47af",
+      "name": "Overview Explanation5"
+    },
+    {
+      "parameters": {
+        "content": "🤖 OPENAI CHAT MODEL\nModel: gpt-4o-mini\n- Fast & cost-effective\n📚 VECTOR STORE (S3 KB)\n- Holds embedded S3 doc chunks\n- Queried when user asks S3 questions\n- Provides grounded answers\n",
+        "height": 184,
+        "width": 336,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1616,
+        608
+      ],
+      "typeVersion": 1,
+      "id": "c35a82f3-7842-47d2-ab6f-34b52cbc5d45",
+      "name": "Overview Explanation"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an AI Agent specialized in Amazon Web Services (AWS).\nYou MUST NOT answer from your own model knowledge. All answers must come from tools.\n\nAVAILABLE TOOLS\n- s3_knowledge_base \n- internet_search\n\nCLASSIFICATION RULES (MANDATORY)\n- Treat the query as **AWS** if it mentions any of: aws, amazon web services, s3, ec2, lambda, dynamodb, rds, vpc, iam, cloudformation, eks, ecs, ecr, bedrock, glue, athena, redshift, elastic beanstalk, route 53, api gateway, cloudwatch, cloudtrail, kms, organizations, control tower.\n- If unsure or ambiguous, **assume AWS** and proceed with tools.\n- Only refuse when the topic is clearly non-AWS (e.g., cities, food, sports, movies, general trivia unrelated to cloud).\n\nROUTING (MANDATORY)\n- If the (assumed) topic is **S3** → MUST call **s3_knowledge_base** and answer ONLY from it.\n- If the (assumed) topic is **AWS but not S3** → MUST call **internet_search** and answer ONLY from it.\n- If the topic is clearly **non-AWS** → refuse with:\n  “I can only answer questions about Amazon Web Services. For example, you could ask about S3 lifecycle policies, EC2 instance types, or IAM roles.”\n\nANSWERING STYLE\n- Plain English; concise (2–3 sentences + optional bullets).\n- Append one of: “(Answer based on S3 knowledge base)”, “(Answer enriched with Internet Search results)”, or “(Refusal: non-AWS topic)”.\n\nSAFETY\n- No secrets/credentials/destructive steps. Remind users that AWS features/pricing can change; verify in official docs.\n\nContext:\nUser Query: {{ $json.body.query }}\nCurrent Date/Time: {{ $now }}\nCurrent Year: 2025\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        1408,
+        112
+      ],
+      "id": "ec9cb35b-43a1-491a-973a-adaec562ff7a",
+      "name": "AI Agent1",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1152,
+        304
+      ],
+      "id": "751e8dcd-7ad1-4a29-88f1-49fe471c75ae",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "iVxuqu7IGzJgmBT3",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.body.username }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1392,
+        304
+      ],
+      "id": "d27065bb-8b03-477e-8c4c-7154c5aa7e80",
+      "name": "Simple Memory1"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "d82c3854-146b-4212-b94e-5b0ca8d7075b",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        928,
+        176
+      ],
+      "id": "e29f55d2-1f69-4e6a-9ad2-7e8e4e6dce9e",
+      "name": "Webhook1",
+      "webhookId": "d82c3854-146b-4212-b94e-5b0ca8d7075b"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.3,
+      "position": [
+        2016,
+        160
+      ],
+      "id": "f69b0415-0eae-477d-9b28-64b5f9231443",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Search the Internet for information",
+        "method": "POST",
+        "url": "https://api-ares.traversaal.ai/live/predict",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "your_traversaal_api_key_here"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('JSON', `{\n  \"query\": [\n    \"search query\"\n  ]\n}`, 'json') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        1968,
+        352
+      ],
+      "id": "126768aa-1e96-4818-b3ec-d2be3c45007c",
+      "name": "internet_search"
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Use this tool to search for information about Amazon S3 (Simple Storage Service). This contains details about S3 concepts, buckets, objects, permissions, pricing, and basic usage. ",
+        "memoryKey": {
+          "__rl": true,
+          "mode": "list",
+          "value": "vector_store_key"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "typeVersion": 1.3,
+      "position": [
+        1632,
+        336
+      ],
+      "id": "7faab0b1-1d7a-4248-a2aa-7a90280bacd8",
+      "name": "s3_knowledge_base"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "memoryKey": {
+          "__rl": true,
+          "mode": "list",
+          "value": "vector_store_key"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "typeVersion": 1.3,
+      "position": [
+        1648,
+        1184
+      ],
+      "id": "5d6e0424-4021-4a0c-b247-ffbc8f7bf679",
+      "name": "s3_knowledge_base1"
+    },
+    {
+      "parameters": {
+        "content": "🌐 INTERNET SEARCH (TOOL)\n- Purpose: Up-to-date info for **non-S3 AWS** topics\n- Tool name: **internet_search**\n- Input (REQUIRED): {\"query\": [\"<string>\", \"<string>\"]}\n- Sends POST to Ares; include x-api-key\n\nUses Traversaal ARES API",
+        "height": 216,
+        "width": 352,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2096,
+        352
+      ],
+      "typeVersion": 1,
+      "id": "3fbf53a8-5908-44b7-8aa3-d9eb7ebaee34",
+      "name": "Overview Explanation10"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        1088,
+        3808
+      ],
+      "id": "2f168fd7-470b-4941-b421-73c9c902046e",
+      "name": "When chat message received",
+      "webhookId": "679e356b-fcc3-4abc-ab59-8ca4ce2cc616"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1152,
+        4032
+      ],
+      "id": "bea46d69-ab4a-4b58-abc5-b9c5b42752ea",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "iVxuqu7IGzJgmBT3",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        1392,
+        4016
+      ],
+      "id": "8224f452-946b-43ed-a522-34b24dda4b89",
+      "name": "Postgres Chat Memory"
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolName": "aws_knowledge_base",
+        "toolDescription": "Extracting chunks",
+        "tableName": {
+          "__rl": true,
+          "value": "documents",
+          "mode": "list",
+          "cachedResultName": "documents"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1,
+      "position": [
+        1552,
+        3968
+      ],
+      "id": "69105914-08b2-4189-8b26-5b3f5ba2c376",
+      "name": "Supabase Vector Store"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "tableName": {
+          "__rl": true,
+          "value": "documents",
+          "mode": "list",
+          "cachedResultName": "documents"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1,
+      "position": [
+        1392,
+        4448
+      ],
+      "id": "5354b79f-3758-46e6-a041-066debb5136a",
+      "name": "Add to Supabase"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a helpful assistant"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        1312,
+        3808
+      ],
+      "id": "efc74852-f904-40cf-9877-55a61ca0963b",
+      "name": "RAG Agent"
+    },
+    {
+      "parameters": {
+        "content": "# Source: Nate Herk | AI Automation\nYouTube link: https://www.youtube.com/watch?v=JjBofKJnYIU",
+        "height": 100,
+        "width": 760,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1120,
+        3504
+      ],
+      "typeVersion": 1,
+      "id": "60639681-8777-4dfb-8ce9-7a2f1939ca09",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "🎯 **CHAT TRIGGER**\n\nThis is your main entry point!\n- Receives user messages\n- Passes them to RAG Agent\n- Webhook-based for real-time chat",
+        "height": 180,
+        "width": 280,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        848,
+        3664
+      ],
+      "typeVersion": 1,
+      "id": "b6337db6-db77-4aae-be5b-656e781d0c14",
+      "name": "Trigger Explanation"
+    },
+    {
+      "parameters": {
+        "content": "🧠 **RAG AGENT - The Brain**\n\nThis is the core AI that:\n- Processes user questions\n- Decides when to search documents\n- Combines knowledge with reasoning\n- Maintains conversation flow\n\nSystem message: \"You are a helpful assistant\"",
+        "height": 200,
+        "width": 300
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1632,
+        3648
+      ],
+      "typeVersion": 1,
+      "id": "8751d21f-1138-4302-82d5-d3c05539c923",
+      "name": "Agent Explanation"
+    },
+    {
+      "parameters": {
+        "content": "🤖 **LANGUAGE MODEL**\n\nGPT-4o-mini provides:\n- Natural language understanding\n- Response generation\n- Reasoning capabilities\n- Cost-effective AI power",
+        "width": 220,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        880,
+        4016
+      ],
+      "typeVersion": 1,
+      "id": "f18c58db-aeaf-4928-afb2-cee9bdac89c0",
+      "name": "LLM Explanation"
+    },
+    {
+      "parameters": {
+        "content": "💾 **CONVERSATION MEMORY**\n\nPostgres database stores:\n- Chat history\n- User context\n- Previous Q&A pairs\n- Session continuity\n\nEnables natural conversations!",
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1344,
+        4192
+      ],
+      "typeVersion": 1,
+      "id": "d54bbd54-cfc9-41aa-a08f-0548d328d7ca",
+      "name": "Memory Explanation"
+    },
+    {
+      "parameters": {
+        "content": "🔍 **VECTOR SEARCH TOOL**\n\nThis tool allows the agent to:\n- Search through document chunks\n- Find relevant information\n- Retrieve context for answers\n- Work with AWS knowledge base\n\nMode: retrieve-as-tool\nTool name: aws_knowledge_base",
+        "height": 200,
+        "width": 280,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1888,
+        3936
+      ],
+      "typeVersion": 1,
+      "id": "7c6df2c5-18a1-408d-bf72-c8d876115930",
+      "name": "Vector Tool Explanation"
+    },
+    {
+      "parameters": {
+        "content": "🔤 **EMBEDDING MODEL**\n\nConverts text to vectors for:\n- Semantic search\n- Similarity matching\n- Document retrieval\n- Vector comparisons\n\nUsed by vector store for search",
+        "height": 140,
+        "width": 220,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1648,
+        4192
+      ],
+      "typeVersion": 1,
+      "id": "130f8c73-58c6-47f1-b98e-97af12770010",
+      "name": "Embedding Explanation"
+    },
+    {
+      "parameters": {
+        "content": "📥 **MANUAL TRIGGER**\n\nClick to start document processing!\n- One-time setup process\n- Prepares your knowledge base\n- Run this before chatting",
+        "height": 280,
+        "width": 200,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        720,
+        4432
+      ],
+      "typeVersion": 1,
+      "id": "8edc4759-9c8e-41fd-907e-e5a6c6a8b75d",
+      "name": "Manual Trigger Explanation"
+    },
+    {
+      "parameters": {
+        "content": "📂 **GOOGLE DRIVE DOWNLOAD**\n\nDownloads specific file:\n- AWS guide PDF\n- Binary data format\n- Ready for processing\n\nFile ID: 1dG8aTu5K1rKYsQluGKeU6lRd0nShf3Ro",
+        "height": 140,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1024,
+        4608
+      ],
+      "typeVersion": 1,
+      "id": "d48576f4-5ea0-4fd4-a64f-a06b3d8b090a",
+      "name": "Drive Explanation"
+    },
+    {
+      "parameters": {
+        "content": "💾 **VECTOR DATABASE INSERT**\n\nStores processed documents:\n- Embeddings + metadata\n- Supabase 'documents' table\n- Ready for retrieval\n- Searchable knowledge base",
+        "height": 200,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1760,
+        4448
+      ],
+      "typeVersion": 1,
+      "id": "c9bffcd2-e4dd-463f-a29d-64fc64c6de8f",
+      "name": "Insert Explanation"
+    },
+    {
+      "parameters": {
+        "content": "🔤 **EMBEDDINGS FOR STORAGE**\n\nConverts text chunks to vectors:\n- OpenAI embedding model\n- Numerical representations\n- Enables semantic search\n- Feeds into vector store",
+        "height": 280,
+        "width": 220,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1248,
+        4816
+      ],
+      "typeVersion": 1,
+      "id": "2c04cc56-62c9-4a7f-ba78-c0eea3073ddd",
+      "name": "Storage Embedding Explanation"
+    },
+    {
+      "parameters": {
+        "content": "📄 **DOCUMENT LOADER**\n\nProcesses binary files:\n- Extracts text from PDF\n- Handles various formats\n- Converts to readable text\n- Prepares for chunking\n\nData type: binary",
+        "height": 140,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1712,
+        4768
+      ],
+      "typeVersion": 1,
+      "id": "386dd067-4a5f-44c5-8f2c-351f51a9242f",
+      "name": "Loader Explanation"
+    },
+    {
+      "parameters": {
+        "content": "✂️ **TEXT SPLITTER**\n\nBreaks documents into chunks:\n- Recursive character splitting\n- Manageable piece sizes\n- Preserves context\n- Optimizes for embeddings\n\nFeeds into Document Loader",
+        "height": 140,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1728,
+        5024
+      ],
+      "typeVersion": 1,
+      "id": "c77d77f8-48fb-4992-bcbd-054d2e7973a6",
+      "name": "Splitter Explanation"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1328,
+        4672
+      ],
+      "id": "c519ea19-117e-4902-b43b-e98582066fea",
+      "name": "Embeddings OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "iVxuqu7IGzJgmBT3",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataType": "binary",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        4672
+      ],
+      "id": "6c81076a-4814-4b04-b4fa-8dc4df5264d1",
+      "name": "Default Data Loader1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        1632,
+        4896
+      ],
+      "id": "71542ff6-9192-42a5-802f-349d3355dbf9",
+      "name": "Recursive Character Text Splitter1"
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "1dG8aTu5K1rKYsQluGKeU6lRd0nShf3Ro",
+          "mode": "list",
+          "cachedResultName": "aws-guide.pdf",
+          "cachedResultUrl": "https://drive.google.com/file/d/1dG8aTu5K1rKYsQluGKeU6lRd0nShf3Ro/view?usp=drivesdk"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1168,
+        4448
+      ],
+      "id": "f2b9ae00-9878-4b4c-b6db-0423c94428f4",
+      "name": "Download File1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1920,
+        4208
+      ],
+      "id": "012b263d-97f9-428b-afac-633dbf89fff3",
+      "name": "Embeddings1",
+      "credentials": {
+        "openAiApi": {
+          "id": "iVxuqu7IGzJgmBT3",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# Document Processing Pipeline\n\n📁 **STEP 1: Document Ingestion**\n- Downloads AWS guide PDF from Google Drive\n- Splits document into manageable chunks\n- Converts text to vector embeddings\n- Stores in Supabase vector database\n\n⚡ **How it works:**\n1. Manual trigger starts the process\n2. Document is downloaded as binary data\n3. Text splitter breaks it into chunks\n4. OpenAI creates embeddings for each chunk\n5. Everything gets stored in Supabase\n\n🔄 **Run this ONCE to populate your knowledge base**",
+        "height": 760,
+        "width": 1140
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        160,
+        4352
+      ],
+      "typeVersion": 1,
+      "id": "c8b5afc5-986d-49aa-b352-2495d2d25dd2",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "# RAG Agent with Memory\n\n🤖 **MAIN CHAT INTERFACE**\n- User sends message → RAG Agent processes it\n- Agent uses OpenAI GPT-4o-mini for responses\n- Has access to document knowledge via vector search\n- Remembers conversation history via Postgres\n\n🧠 **Memory System:**\n- Postgres stores chat history\n- Agent remembers context from previous messages\n- Enables natural, flowing conversations\n\n🔍 **Knowledge Retrieval:**\n- Vector store searches relevant document chunks\n- Agent can answer questions about your documents\n- Combines retrieved info with AI reasoning",
+        "height": 720,
+        "width": 1120,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        192,
+        3632
+      ],
+      "typeVersion": 1,
+      "id": "b9222101-3ef3-487f-8a25-2adb6d958587",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "📋 **WORKFLOW OVERVIEW**\n\n**Two main processes:**\n\n1️⃣ **Document Setup (Bottom):**\n   Manual trigger → Download → Split → Embed → Store\n   \n2️⃣ **Chat Interface (Top):**\n   User message → RAG Agent → Search + Generate → Response\n\n**Key Features:**\n- 💾 Persistent memory (Postgres)\n- 🔍 Semantic search (Vector DB)\n- 🤖 AI reasoning (GPT-4o-mini)\n- 📚 Document knowledge (AWS guide)",
+        "height": 280,
+        "width": 400
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        320,
+        4048
+      ],
+      "typeVersion": 1,
+      "id": "512af2e8-59be-43b0-91b7-dceabeadbbaf",
+      "name": "Overview Explanation11"
+    }
+  ],
+  "connections": {
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "s3_knowledge_base1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "s3_knowledge_base1",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recursive Character Text Splitter": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking 'Test workflow'": {
+      "main": [
+        [
+          {
+            "node": "Download File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download File": {
+      "main": [
+        [
+          {
+            "node": "s3_knowledge_base1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings": {
+      "ai_embedding": [
+        [
+          {
+            "node": "s3_knowledge_base",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "internet_search": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "s3_knowledge_base": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "RAG Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "RAG Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "RAG Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase Vector Store": {
+      "ai_tool": [
+        [
+          {
+            "node": "RAG Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Add to Supabase",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader1": {
+      "ai_document": [
+        [
+          {
+            "node": "Add to Supabase",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recursive Character Text Splitter1": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader1",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download File1": {
+      "main": [
+        [
+          {
+            "node": "Add to Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": null,
+  "pinData": {},
+  "versionId": "63324e65-3c7b-424b-a4e4-e26ef2deecb4",
+  "activeVersionId": null,
+  "versionCounter": 3,
+  "triggerCount": 0,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2025-12-14T01:01:06.963Z",
+      "createdAt": "2025-12-14T01:01:06.963Z",
+      "role": "workflow:owner",
+      "workflowId": "UJkOtkkvV0kh3wqx",
+      "projectId": "mrsSb7JCmN7gKdEx",
+      "project": {
+        "updatedAt": "2025-12-11T22:06:23.542Z",
+        "createdAt": "2025-12-11T22:04:08.274Z",
+        "id": "mrsSb7JCmN7gKdEx",
+        "name": "Sreehari Nambiar <sreehari.nambiar@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null
+      }
+    }
+  ]
+}
